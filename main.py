@@ -15,9 +15,15 @@ def index():
 @app.route('/hello')
 def hello():
     user_ip = request.cookies.get('user_ip')
+    todos = ['Tarea 1', 'Tarea 2', 'Tarea 3']
+
+    response_data = {
+        'user_ip': user_ip, 
+        'todos': todos
+    }
 
     # return f'Hello, World {user_ip}'
-    return render_template("hello.html", user_ip=user_ip)
+    return render_template("hello.html", **response_data)
 
 
 @app.route('/user/<username>')
